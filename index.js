@@ -88,7 +88,7 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  return callback;
+  return callback(numberList.reduce((num1, num2) => num1 + num2, 0));
 }
 
 /**
@@ -234,8 +234,11 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations() {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  let total = runners.reduce(function(accumulate, item){
+    return accumulate + item.donation;
+  }, 0);
+  return total;
 }
 
 /////////////// CLOSURES ///////////////
